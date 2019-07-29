@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundGrey"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context=".CreateAcountActivity"
+    tools:showIn="@layout/activity_create_acount">
+
 
     <android.support.v7.widget.CardView
         android:layout_width="362dp"
@@ -25,52 +27,59 @@
         app:layout_constraintVertical_bias="0.19">
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:padding="30dp">
 
             <EditText
-                android:id="@+id/login_username"
+                android:id="@+id/createAccount_firstname_et"
                 android:layout_width="match_parent"
+                android:inputType="text"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_username_et"
-                android:inputType="textEmailAddress" />
+                android:layout_marginTop="10dp"
+                android:hint="@string/firstname" />
 
             <EditText
-                android:id="@+id/login_password"
+                android:id="@+id/createAccount_lastname_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/login_username"
-                android:layout_marginTop="15dp"
-                android:hint="@string/login_password_et"
-                android:inputType="textPassword" />
+                android:inputType="text"
+                android:layout_below="@id/createAccount_firstname_et"
+                android:layout_marginTop="10dp"
+                android:hint="@string/lastname" />
+
+            <EditText
+                android:id="@+id/createAccount_username_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:layout_below="@id/createAccount_lastname_et"
+                android:layout_marginTop="10dp"
+                android:hint="@string/username" />
+
+            <EditText
+                android:id="@+id/createAccount_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:layout_below="@id/createAccount_username_et"
+                android:layout_marginTop="10dp"
+                android:hint="@string/password" />
 
             <Button
-                android:id="@+id/login_btn"
+                android:id="@+id/create_account_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/login_password"
+                android:layout_below="@id/createAccount_password_et"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/login_btn"
+                android:padding="10dp"
+                android:text="@string/create_account"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/create_account_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/login_btn"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:textStyle="italic"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="@string/create_an_account_text" />
-
         </RelativeLayout>
-
     </android.support.v7.widget.CardView>
-
 </android.support.constraint.ConstraintLayout>

@@ -1,7 +1,9 @@
-package com.example.course;
+package com.example.course.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.course.R;
 
 public class CreateAcountActivity extends AppCompatActivity {
 

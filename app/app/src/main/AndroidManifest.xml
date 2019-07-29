@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DashBoardActivity"></activity>
-        <activity android:name=".CreateAcountActivity" />
+        <activity android:name="com.example.course.controller.DashBoardActivity"></activity>
+        <activity android:name="com.example.course.controller.CreateAcountActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

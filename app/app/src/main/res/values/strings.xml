@@ -10,4 +10,6 @@
     <string name="password">Password</string>
     <string name="username">Username</string>
     <string name="create_account">Create Account</string>
+    <string name="Course_image">Course Image</string>
+    <string name="avatar_image_tiny">avatar</string>
 </resources>

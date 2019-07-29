@@ -2,15 +2,25 @@ package com.example.course.data;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.course.R;
+import com.example.course.model.Course;
+
+import java.util.ArrayList;
+
 public class CourseListAdaptor extends RecyclerView.Adapter<CourseListAdaptor.ViewHolder> {
+
+    private ArrayList<Course> courseArrayList;
 
     @NonNull
     @Override
-    public CourseListAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return null;
+    public CourseListAdaptor.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View courseRow = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.course_row, parent, false);
+        return new ViewHolder(courseRow);
     }
 
     @Override
@@ -20,7 +30,7 @@ public class CourseListAdaptor extends RecyclerView.Adapter<CourseListAdaptor.Vi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return courseArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

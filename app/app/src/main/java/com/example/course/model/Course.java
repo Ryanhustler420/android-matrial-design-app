@@ -11,6 +11,12 @@ public class Course {
         return ctx.getResources().getIdentifier(this.courseImage, "drawable", ctx.getPackageName());
     }
 
+    public Course(String courseName, String courseImage, String authorImage) {
+        this.courseName = courseName;
+        this.courseImage = courseImage;
+        this.authorImage = authorImage;
+    }
+
     public String getCourseName() {
         return courseName;
     }

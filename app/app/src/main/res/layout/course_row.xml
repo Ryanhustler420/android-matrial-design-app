@@ -2,51 +2,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
+        android:id="@+id/course_card_view"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/course_image_id"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:contentDescription="@string/Course_image"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/course_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/avatar_user_image"
+            android:layout_width="53dp"
+            android:layout_height="59dp"
+            android:contentDescription="@string/avatar_image_tiny"
+            tools:srcCompat="@drawable/avatar"
+            android:layout_gravity="bottom|right"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"/>
+
     </android.support.v7.widget.CardView>
-
-    <ImageView
-        android:id="@+id/course_image_id"
-        android:layout_width="match_parent"
-        android:layout_height="410dp"
-        android:contentDescription="@string/Course_image"
-        android:scaleType="fitCenter"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/course_title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/course_image_id"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/app_name"
-        android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/avatar_user_image"
-        android:layout_width="53dp"
-        android:layout_height="59dp"
-        android:layout_alignStart="@+id/course_title_text"
-        android:layout_alignLeft="@+id/course_title_text"
-        android:layout_alignTop="@+id/course_image_id"
-        android:layout_alignEnd="@+id/course_image_id"
-        android:layout_alignRight="@+id/course_image_id"
-        android:layout_alignBottom="@+id/course_title_text"
-        android:layout_marginStart="347dp"
-        android:layout_marginLeft="347dp"
-        android:layout_marginTop="347dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginRight="11dp"
-        android:layout_marginBottom="3dp"
-        android:contentDescription="@string/avatar_image_tiny"
-        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>

@@ -18,6 +18,8 @@ import com.example.course.R;
 import com.example.course.model.Course;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CourseListAdaptor extends RecyclerView.Adapter<CourseListAdaptor.ViewHolder>{
 
     //    private ArrayList<Course> courseArrayList;
@@ -50,6 +52,7 @@ public class CourseListAdaptor extends RecyclerView.Adapter<CourseListAdaptor.Vi
             public void onGenerated(@Nullable Palette palette) {
                 int BackgroundColor = palette.getMutedColor(ContextCompat.getColor(context, android.R.color.black));
                 viewHolder.courseTitle.setBackgroundColor(BackgroundColor);
+                viewHolder.authorImageView.setBorderColor(BackgroundColor);
             }
         });
     }
@@ -66,7 +69,8 @@ public class CourseListAdaptor extends RecyclerView.Adapter<CourseListAdaptor.Vi
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView courseTitle;
-        public ImageView courseImageView, authorImageView;
+        public ImageView courseImageView;
+        public CircleImageView authorImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);

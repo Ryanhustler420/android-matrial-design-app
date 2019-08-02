@@ -25,6 +25,8 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
+        isListView = true;
+
         recyclerView = findViewById(R.id.courseRecyclerView);
         adaptor = new CourseListAdaptor();
 

@@ -71,6 +71,7 @@
             android:layout_marginTop="28dp"
             android:alpha="0.99"
             android:elevation="6dp"
+            android:id="@+id/detailsAddButton"
             android:src="@android:drawable/ic_input_add"
             />
     </FrameLayout>

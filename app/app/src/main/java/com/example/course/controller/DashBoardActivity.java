@@ -24,7 +24,7 @@ public class DashBoardActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.courseRecyclerView);
         adaptor = new CourseListAdaptor();
 
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
         recyclerView.setAdapter(adaptor);

@@ -7,13 +7,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.course.controller.CreateAcountActivity;
+import com.example.course.controller.DashBoardActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView Signup_text;
+    private TextView Signup_text;
+    private Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Signup_text = findViewById(R.id.create_account_text);
+        login = findViewById(R.id.login_btn);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, DashBoardActivity.class));
+            }
+        });
 
         Signup_text.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Course</string>
     <string name="action_settings">Settings</string>
+    <string name="action_show_as_grid">Show as grid</string>
+    <string name="action_show_as_list">Show as list</string>
     <string name="login_username_et">Username</string>
     <string name="login_password_et">Password</string>
     <string name="login_btn">Login</string>

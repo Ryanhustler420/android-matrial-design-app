@@ -1,7 +1,9 @@
 package com.example.course.controller;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -65,9 +67,40 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.detailsAddButton:
                 if(!isEditTextVisible) {
                     revealEditText(revealView);
+//                    fab.setImageResource(R.drawable.ic_check);
+//                    Animatable animatable = (Animatable) fab.getDrawable();
+//                    animatable.start();
+                }else {
+                    hideEditTect(revealView);
+//                    fab.setImageResource(R.drawable.ic_add);
+//                    Animatable animatable = (Animatable) fab.getDrawable();
+//                    animatable.start();
                 }
                 break;
         }
+    }
+
+    private void hideEditTect(final LinearLayout revealView) {
+        int cx = revealView.getRight() - 30;
+        int cy = revealView.getBottom() - 60;
+
+        int initialRadius = revealView.getWidth();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            final Animator anim = ViewAnimationUtils.createCircularReveal(revealView, cx, cy, initialRadius, 0f);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    revealView.setVisibility(View.INVISIBLE);
+                }
+            });
+            isEditTextVisible = false;
+            anim.start();
+        }else {
+            revealView.setVisibility(View.INVISIBLE);
+            isEditTextVisible = false;
+        }
+
     }
 
     private void revealEditText(LinearLayout revealView) {

@@ -1,6 +1,12 @@
 package com.example.course.data;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,14 +33,25 @@ public class CourseListAdaptor extends RecyclerView.Adapter<CourseListAdaptor.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CourseListAdaptor.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull final CourseListAdaptor.ViewHolder viewHolder, int position) {
+        final Context context = viewHolder.courseTitle.getContext();
+
         //  Binding Data And View
         Course course = courseData.courseList().get(position);
         viewHolder.courseTitle.setText(course.getCourseName());
-        Picasso.get().load(course.getImageRecourseId(viewHolder.courseImageView.getContext()))
+        Picasso.get().load(course.getImageRecourseId(context))
                 .into(viewHolder.courseImageView);
-        Picasso.get().load(course.getImageRecourseId(viewHolder.authorImageView.getContext()))
+        Picasso.get().load(course.getImageRecourseId(context))
                 .into(viewHolder.authorImageView);
+
+        Bitmap photo = BitmapFactory.decodeResource(context.getResources(), course.getImageRecourseId(context));
+        Palette.from(photo).generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(@Nullable Palette palette) {
+                int BackgroundColor = palette.getMutedColor(ContextCompat.getColor(context, android.R.color.black));
+                viewHolder.courseTitle.setBackgroundColor(BackgroundColor);
+            }
+        });
     }
 
     @Override

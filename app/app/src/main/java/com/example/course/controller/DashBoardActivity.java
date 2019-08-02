@@ -1,5 +1,7 @@
 package com.example.course.controller;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -38,11 +40,16 @@ public class DashBoardActivity extends AppCompatActivity {
         adaptor.setOnClickListener(new CourseListAdaptor.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(DashBoardActivity.this, "Clicked: " + position, Toast.LENGTH_LONG).show();
+                startActivity(newIntent(DashBoardActivity.this, position));
             }
         });
     }
 
+    public Intent newIntent(Context ctx, int position) {
+        Intent intent  = new Intent(ctx, DetailsActivity.class);
+        intent.putExtra("course_id", position);
+        return intent;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

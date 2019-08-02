@@ -14,4 +14,5 @@
     <string name="create_account">Create Account</string>
     <string name="Course_image">Course Image</string>
     <string name="avatar_image_tiny">avatar</string>
+    <string name="title_activity_details">DetailsActivity</string>
 </resources>

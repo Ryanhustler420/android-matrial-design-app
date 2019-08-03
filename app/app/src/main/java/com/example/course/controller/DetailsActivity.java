@@ -3,23 +3,26 @@ package com.example.course.controller;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.graphics.drawable.Animatable;
-import android.hardware.input.InputManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.course.R;
 import com.example.course.data.CourseData;
 import com.example.course.model.Course;
+
+import java.util.ArrayList;
 
 public class DetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,10 +32,13 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private InputMethodManager inputManager;
     private LinearLayout revealView;
     private EditText commentEditText;
+    private ListView commentsListView;
 
     private boolean isEditTextVisible = false;
 
     private FloatingActionButton fab;
+    private ArrayList<String> comments;
+    private ArrayAdapter<String> commentsAdaptor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,15 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         setSupportActionBar(toolbar);
 
         setupUI();
+        setUpAdaptor();
         loadCourse();
+    }
+
+    private void setUpAdaptor() {
+        commentsListView = findViewById(R.id.detailsCommentsListView);
+        comments = new ArrayList<>();
+        commentsAdaptor = new ArrayAdapter<>(this, R.layout.comment_row, comments);
+        commentsListView.setAdapter(commentsAdaptor);
     }
 
     private void loadCourse() {
@@ -71,16 +85,23 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.detailsAddButton:
                 if(!isEditTextVisible) {
+                    commentEditText.setText("");
                     revealEditText(revealView);
                     commentEditText.requestFocus();
                     inputManager.showSoftInput(commentEditText, InputMethodManager.SHOW_IMPLICIT);
-
                 }else {
+                    addTOComment(commentEditText.getText().toString().trim());
                     hideEditTect(revealView);
                     commentEditText.requestFocus();
                     inputManager.hideSoftInputFromWindow(commentEditText.getWindowToken(), 0);
                 }
                 break;
+        }
+    }
+
+    private void addTOComment(String comment) {
+        if(!TextUtils.isEmpty(comment)) {
+            comments.add(comment);
         }
     }
 

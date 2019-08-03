@@ -3,9 +3,13 @@ package com.example.course.controller;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -50,6 +54,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
         setupUI();
         setUpAdaptor();
         loadCourse();
+        getPhoto();
     }
 
     private void setUpAdaptor() {
@@ -97,6 +102,22 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
                 }
                 break;
         }
+    }
+
+    private void getPhoto() {
+        Bitmap photo = BitmapFactory.decodeResource(getResources(), course.getImageRecourseId(this));
+        colorized(photo);
+    }
+
+    private void colorized(Bitmap photo) {
+        Palette palette = Palette.from(photo).generate();
+        applyPalette(palette);
+    }
+
+    private void applyPalette(Palette palette) {
+         getWindow().setBackgroundDrawable(new ColorDrawable(palette.getDarkMutedColor(0)));
+        // courseTitle.setBackgroundColor(palette.getMutedColor(0));
+        revealView.setBackgroundColor(palette.getLightMutedColor(0));
     }
 
     private void addTOComment(String comment) {

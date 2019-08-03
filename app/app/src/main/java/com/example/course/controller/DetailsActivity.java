@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.graphics.drawable.Animatable;
+import android.hardware.input.InputManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
     private TextView courseTitle;
     private InputMethodManager inputManager;
     private LinearLayout revealView;
+    private EditText commentEditText;
 
     private boolean isEditTextVisible = false;
 
@@ -59,6 +62,8 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
 
         fab = findViewById(R.id.detailsAddButton);
         fab.setOnClickListener(this);
+
+        commentEditText = findViewById(R.id.detailsComments);
     }
 
     @Override
@@ -67,14 +72,13 @@ public class DetailsActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.detailsAddButton:
                 if(!isEditTextVisible) {
                     revealEditText(revealView);
-//                    fab.setImageResource(R.drawable.ic_check);
-//                    Animatable animatable = (Animatable) fab.getDrawable();
-//                    animatable.start();
+                    commentEditText.requestFocus();
+                    inputManager.showSoftInput(commentEditText, InputMethodManager.SHOW_IMPLICIT);
+
                 }else {
                     hideEditTect(revealView);
-//                    fab.setImageResource(R.drawable.ic_add);
-//                    Animatable animatable = (Animatable) fab.getDrawable();
-//                    animatable.start();
+                    commentEditText.requestFocus();
+                    inputManager.hideSoftInputFromWindow(commentEditText.getWindowToken(), 0);
                 }
                 break;
         }
